@@ -1,3 +1,3 @@
 export const NotFound = () => {
-  return alert('Please reload your page');
+  return console.log('Please reload your page');
 };

@@ -5,13 +5,15 @@ import { Movie } from 'page/Movie';
 import { Cast } from './cast/Cast';
 import { Reviews } from './reviews/Reviews';
 import { NotFound } from './not-found/Notfound';
+import { MovieInfo } from 'page/MovieInfo';
 
 export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home />} />
-        <Route path="movie" element={<Movie />}>
+        <Route path="movie" element={<Movie />} />
+        <Route path="movie/:id" element={<MovieInfo />}>
           <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<Reviews />} />
         </Route>
