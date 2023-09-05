@@ -22,9 +22,6 @@ export const MovieInfo = () => {
   };
 
   const filmById = getFilmById(id);
-  if (!filmById) {
-    return <div>Loading...</div>;
-  }
 
   console.log(filmById);
   return (
