@@ -1,39 +1,26 @@
-import { FetchApi } from 'components/api-request';
+import { GetMovieDetails } from 'components/api-request';
+import { MovieAbout } from 'components/movie-about/MovieAbout';
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 export const MovieInfo = () => {
-  const { id } = useParams();
-  const [films, setFilms] = useState([]);
+  const { movieId } = useParams();
+  const [films, setFilms] = useState(null);
 
   useEffect(() => {
-    const fetchFilms = async () => {
+    if (!movieId) return;
+    const getFilms = async () => {
       try {
-        const { results } = await FetchApi();
-        setFilms(results);
+        const response = await GetMovieDetails(movieId);
+        setFilms(response);
       } catch (error) {
         console.error('error');
       }
     };
-    fetchFilms();
-  }, []);
-  const getFilmById = filmId => {
-    return films.find(film => film.id === filmId);
-  };
+    getFilms();
+  }, [movieId]);
 
-  const filmById = getFilmById(id);
-
-  console.log(filmById);
   return (
-    <main>
-      <ul>
-        <li>
-          <Link to="cast">Cast</Link>
-        </li>
-        <li>
-          <Link to="reviews">Reviews</Link>
-        </li>
-      </ul>
-    </main>
+    <main>{films && <MovieAbout aboutMovie={films} movieId={movieId} />}</main>
   );
 };
