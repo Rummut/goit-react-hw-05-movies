@@ -9,7 +9,6 @@ export const Home = () => {
       try {
         const { results } = await FetchApi();
         setFilms(results);
-        console.log(results);
       } catch (error) {
         console.error('error');
       }

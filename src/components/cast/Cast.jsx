@@ -6,13 +6,11 @@ export const Cast = () => {
   const { movieId } = useParams();
   const [actors, setActors] = useState(null);
 
-  console.log(movieId);
   useEffect(() => {
     const getFilms = async () => {
       try {
         const { cast } = await GetActors(movieId);
         setActors(cast);
-        console.log(cast);
       } catch (error) {
         console.error('error');
       }
@@ -24,17 +22,21 @@ export const Cast = () => {
     <>
       {actors &&
         actors.map(actor => (
-          <>
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
-              alt=""
-              width={200}
-            />
-            <ul key={actor.id}>
-              <li>{actor.name}</li>
-              <li>Character:{actor.character}</li>
-            </ul>
-          </>
+          <div key={actor.id}>
+            {actor.profile_path && (
+              <>
+                <img
+                  src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
+                  alt=""
+                  width={200}
+                />
+                <ul>
+                  <li>Name: {actor.name}</li>
+                  <li>Character: {actor.character}</li>
+                </ul>
+              </>
+            )}
+          </div>
         ))}
     </>
   );
