@@ -1,6 +1,5 @@
 import { FetchApi } from 'components/api-request';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Container, Items, List, Title } from './Home.styled';
 
 const Home = () => {
