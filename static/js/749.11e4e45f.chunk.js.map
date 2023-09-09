@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/749.11e4e45f.chunk.js","mappings":"6IAIA,UAJiB,WACf,OAAOA,QAAQC,IAAI,0BACrB,C","sources":["components/not-found/Notfound.jsx"],"sourcesContent":["const NotFound = () => {\n  return console.log('Please reload your page');\n};\n\nexport default NotFound;\n"],"names":["console","log"],"sourceRoot":""}
