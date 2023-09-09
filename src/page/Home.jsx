@@ -1,8 +1,9 @@
 import { FetchApi } from 'components/api-request';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Container, Items, List, Title } from './Home.styled';
 
-export const Home = () => {
+const Home = () => {
   const [films, setFilms] = useState([]);
   useEffect(() => {
     const fetchFilms = async () => {
@@ -16,15 +17,17 @@ export const Home = () => {
     fetchFilms();
   }, []);
   return (
-    <main>
-      <h1>Trending week</h1>
-      <ul>
+    <Container>
+      <Title>Trending week</Title>
+      <Items>
         {films.map(film => (
           <li key={film.id}>
-            <Link to={`/movie/${film.id}`}>{film.title}</Link>
+            <List to={`/movie/${film.id}`}>{film.title}</List>
           </li>
         ))}
-      </ul>
-    </main>
+      </Items>
+    </Container>
   );
 };
+
+export default Home;

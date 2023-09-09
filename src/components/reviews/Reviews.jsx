@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { GetReviews } from 'components/api-request';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-export const Reviews = () => {
+const Reviews = () => {
   const { movieId } = useParams();
   const [author, setAuthor] = useState(null);
 
@@ -33,3 +33,5 @@ export const Reviews = () => {
     </>
   );
 };
+
+export default Reviews;

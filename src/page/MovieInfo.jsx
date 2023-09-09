@@ -3,7 +3,7 @@ import { MovieAbout } from 'components/movie-about/MovieAbout';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-export const MovieInfo = () => {
+const MovieInfo = () => {
   const { movieId } = useParams();
   const [films, setFilms] = useState(null);
 
@@ -24,3 +24,5 @@ export const MovieInfo = () => {
     <main>{films && <MovieAbout aboutMovie={films} movieId={movieId} />}</main>
   );
 };
+
+export default MovieInfo;

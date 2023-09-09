@@ -1,8 +1,9 @@
 import { GetSearchMovie } from 'components/api-request';
+import { FormSubmit } from 'components/form-submit/FormSubmit';
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 
-export const MovieList = () => {
+const MovieList = () => {
   const [querySearch, setQuerySearch] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -29,16 +30,7 @@ export const MovieList = () => {
 
   return (
     <>
-      <form
-        onSubmit={event => {
-          event.preventDefault();
-          handleSubmit(event.target.elements.values.value);
-          event.target.reset();
-        }}
-      >
-        <input name="values" required autoFocus placeholder="Search movie" />
-        <button type="submit">Search</button>
-      </form>
+      <FormSubmit handleSubmit={handleSubmit} />
       <ul>
         {querySearch &&
           querySearch.map(listOfFilms => (
@@ -52,3 +44,5 @@ export const MovieList = () => {
     </>
   );
 };
+
+export default MovieList;
