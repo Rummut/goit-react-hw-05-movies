@@ -2,6 +2,7 @@ import { GetMovieDetails } from 'components/api-request';
 import { MovieAbout } from 'components/movie-about/MovieAbout';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Container } from './MovieList.styled';
 
 const MovieInfo = () => {
   const { movieId } = useParams();
@@ -13,6 +14,7 @@ const MovieInfo = () => {
       try {
         const response = await GetMovieDetails(movieId);
         setFilms(response);
+        console.log(response);
       } catch (error) {
         console.error('error');
       }
@@ -21,7 +23,9 @@ const MovieInfo = () => {
   }, [movieId]);
 
   return (
-    <main>{films && <MovieAbout aboutMovie={films} movieId={movieId} />}</main>
+    <Container>
+      {films && <MovieAbout aboutMovie={films} movieId={movieId} />}
+    </Container>
   );
 };
 

@@ -1,7 +1,8 @@
 import { GetSearchMovie } from 'components/api-request';
 import { FormSubmit } from 'components/form-submit/FormSubmit';
 import { useEffect, useState } from 'react';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
+import { Container, Items, List } from './MovieList.styled';
 
 const MovieList = () => {
   const [querySearch, setQuerySearch] = useState(null);
@@ -30,17 +31,22 @@ const MovieList = () => {
 
   return (
     <>
-      <FormSubmit handleSubmit={handleSubmit} />
-      <ul>
-        {querySearch &&
-          querySearch.map(listOfFilms => (
-            <li key={listOfFilms.id}>
-              <Link to={`/movie/${listOfFilms.id}`} state={{ from: location }}>
-                {listOfFilms.title}
-              </Link>
-            </li>
-          ))}
-      </ul>
+      <Container>
+        <FormSubmit handleSubmit={handleSubmit} />
+        <Items>
+          {querySearch &&
+            querySearch.map(listOfFilms => (
+              <li key={listOfFilms.id}>
+                <List
+                  to={`/movie/${listOfFilms.id}`}
+                  state={{ from: location }}
+                >
+                  {listOfFilms.title}
+                </List>
+              </li>
+            ))}
+        </Items>
+      </Container>
     </>
   );
 };

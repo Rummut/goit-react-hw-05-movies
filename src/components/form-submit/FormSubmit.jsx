@@ -1,3 +1,5 @@
+import { Button, Input } from './FormSubmit.styled';
+
 export const FormSubmit = ({ handleSubmit }) => {
   return (
     <form
@@ -7,8 +9,8 @@ export const FormSubmit = ({ handleSubmit }) => {
         event.target.reset();
       }}
     >
-      <input name="values" required autoFocus placeholder="Search movie" />
-      <button type="submit">Search</button>
+      <Input name="values" required autoFocus placeholder="Search movie" />
+      <Button type="submit">Search</Button>
     </form>
   );
 };
