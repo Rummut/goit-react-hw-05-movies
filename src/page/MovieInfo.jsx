@@ -2,7 +2,7 @@ import { GetMovieDetails } from 'components/api-request';
 import { MovieAbout } from 'components/movie-about/MovieAbout';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container } from './MovieList.styled';
+import { Container } from './movie-list/MovieList.styled';
 
 const MovieInfo = () => {
   const { movieId } = useParams();

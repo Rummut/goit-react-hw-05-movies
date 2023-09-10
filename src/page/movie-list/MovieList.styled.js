@@ -18,7 +18,7 @@ export const Items = styled.ul`
   flex-direction: column;
   font-size: 25px;
   list-style: none;
-  margin: 20px 0 0 20px;
+  margin-top: 20px;
 `;
 
 export const List = styled(NavLink)`
