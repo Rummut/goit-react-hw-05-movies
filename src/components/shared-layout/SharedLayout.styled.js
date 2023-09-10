@@ -11,6 +11,7 @@ export const Header = styled.header`
 `;
 
 export const StyledLink = styled(NavLink)`
+  margin-left: 10px;
   margin-right: 40px;
   background-color: #111827;
   border: 1px solid transparent;

@@ -4,7 +4,13 @@ export const Input = styled.input`
   width: 350px;
   height: 40px;
   border-radius: 7px;
-  margin: 30px 30px 0 40px;
+  margin: 20px 20px 0 20px;
+  padding-left: 15px;
+  font-size: 18px;
+
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
 `;
 
 export const Button = styled.button`

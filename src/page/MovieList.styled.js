@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const Container = styled.main`
   width: 100%;
-  padding: 0 32px;
+  padding: 0 50px;
   margin: 0 auto;
 `;
 
@@ -18,6 +18,7 @@ export const Items = styled.ul`
   flex-direction: column;
   font-size: 25px;
   list-style: none;
+  margin: 20px 0 0 20px;
 `;
 
 export const List = styled(NavLink)`
