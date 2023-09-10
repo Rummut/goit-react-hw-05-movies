@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { GetActors } from 'components/api-request';
 import { useParams } from 'react-router-dom';
+import { ItemCast } from './Cast.styled';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -30,10 +31,10 @@ const Cast = () => {
                   alt=""
                   width={200}
                 />
-                <ul>
+                <ItemCast>
                   <li>Name: {actor.name}</li>
                   <li>Character: {actor.character}</li>
-                </ul>
+                </ItemCast>
               </>
             )}
           </div>

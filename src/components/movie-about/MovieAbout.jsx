@@ -1,5 +1,14 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { ContainerAbout, ContainerList, ItemAbout } from './MovieAbout.styled';
+import {
+  AdditionalInfo,
+  BackLink,
+  ContainerAbout,
+  ContainerList,
+  ItemAbout,
+  ListAbout,
+  Overview,
+  TitleAbout,
+} from './MovieAbout.styled';
 
 export const MovieAbout = ({ aboutMovie }) => {
   const location = useLocation();
@@ -9,7 +18,7 @@ export const MovieAbout = ({ aboutMovie }) => {
   const genres = aboutMovie.genres;
   return (
     <>
-      <Link to={backLinkHref}>Back to search</Link>
+      <BackLink to={backLinkHref}>&#10229; Back to search</BackLink>
       <ContainerAbout>
         <img
           src={
@@ -17,32 +26,32 @@ export const MovieAbout = ({ aboutMovie }) => {
               ? `https://image.tmdb.org/t/p/w500/${aboutMovie.poster_path}`
               : defaultImg
           }
-          width={250}
+          width={270}
           alt={aboutMovie.title}
         />{' '}
         <ContainerList>
-          <h1>{aboutMovie.title}</h1>
+          <TitleAbout>{aboutMovie.title}</TitleAbout>
           <ItemAbout>
             <li>Release Date: {aboutMovie.release_date}</li>
-            <li>
+            <ListAbout>
               Country:{' '}
               {aboutMovie.production_countries.map(country => (
-                <p key={country.name}>{country.name}</p>
+                <p key={country.name}>{country.name},</p>
               ))}
-            </li>
+            </ListAbout>
             <li>Vote Average: {aboutMovie.vote_average}</li>
-            <li>
+            <ListAbout>
               Genres:
               {genres.map(genre => (
-                <p key={genre.id}>{genre.name}</p>
+                <p key={genre.id}>{genre.name},</p>
               ))}
-            </li>
+            </ListAbout>
             <li>Budget: {aboutMovie.budget} $</li>
           </ItemAbout>
         </ContainerList>
       </ContainerAbout>
-      <p>Overview: {aboutMovie.overview}</p>
-      <ul>
+      <Overview>Overview: {aboutMovie.overview}</Overview>
+      <AdditionalInfo>
         Additional Information
         <li>
           <Link to="cast" state={{ from: backLinkHref }}>
@@ -55,7 +64,7 @@ export const MovieAbout = ({ aboutMovie }) => {
           </Link>
         </li>
         <Outlet />
-      </ul>
+      </AdditionalInfo>
     </>
   );
 };
