@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[749],{315:function(e,t,o){o.r(t);t.default=function(){return console.log("Please reload your page")}}}]);
-//# sourceMappingURL=749.11e4e45f.chunk.js.map
