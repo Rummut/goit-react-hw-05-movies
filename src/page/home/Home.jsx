@@ -1,6 +1,7 @@
 import { FetchApi } from 'components/api-request';
 import { useEffect, useState } from 'react';
-import { Container, Items, List, Title } from './Home.styled';
+import { Container, Title } from './Home.styled';
+import { MovieListPopular } from 'components/movie-list-popular/movieListPopular';
 
 const Home = () => {
   const [films, setFilms] = useState([]);
@@ -18,13 +19,7 @@ const Home = () => {
   return (
     <Container>
       <Title>Trending week</Title>
-      <Items>
-        {films.map(film => (
-          <li key={film.id}>
-            <List to={`/movie/${film.id}`}>{film.title}</List>
-          </li>
-        ))}
-      </Items>
+      <MovieListPopular films={films} />
     </Container>
   );
 };

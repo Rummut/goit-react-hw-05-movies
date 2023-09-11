@@ -3,7 +3,7 @@ import { SharedLayout } from './shared-layout/SharedLayout.jsx';
 import { lazy } from 'react';
 
 const Home = lazy(() => import('../page/home/Home.jsx'));
-const MovieList = lazy(() => import('../page/movie-list/MovieLIst.jsx'));
+const Movies = lazy(() => import('../page/movies/Movies.jsx'));
 const MovieInfo = lazy(() => import('../page/MovieInfo'));
 const Cast = lazy(() => import('../components/cast/Cast'));
 const Reviews = lazy(() => import('../components/reviews/Reviews'));
@@ -14,7 +14,7 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home />} />
-        <Route path="movie" element={<MovieList />} />
+        <Route path="movie" element={<Movies />} />
         <Route path="movie/:movieId" element={<MovieInfo />}>
           <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<Reviews />} />

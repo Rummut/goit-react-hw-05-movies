@@ -6,6 +6,8 @@ import { ItemCast } from './Cast.styled';
 const Cast = () => {
   const { movieId } = useParams();
   const [actors, setActors] = useState(null);
+  const defaultImg =
+    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
 
   useEffect(() => {
     const getFilms = async () => {
@@ -24,11 +26,15 @@ const Cast = () => {
       {actors &&
         actors.map(actor => (
           <div key={actor.id}>
-            {actor.profile_path && (
+            {
               <>
                 <img
-                  src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
-                  alt=""
+                  src={
+                    actor.profile_path
+                      ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
+                      : defaultImg
+                  }
+                  alt={actor.name}
                   width={200}
                 />
                 <ItemCast>
@@ -36,7 +42,7 @@ const Cast = () => {
                   <li>Character: {actor.character}</li>
                 </ItemCast>
               </>
-            )}
+            }
           </div>
         ))}
     </>

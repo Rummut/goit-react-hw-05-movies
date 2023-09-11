@@ -5,7 +5,7 @@ import { ItemReview, SorryReview } from './Reviews.styled';
 
 const Reviews = () => {
   const { movieId } = useParams();
-  const [author, setAuthor] = useState(null);
+  const [author, setAuthor] = useState([]);
 
   useEffect(() => {
     const getFilms = async () => {
@@ -21,12 +21,10 @@ const Reviews = () => {
 
   return (
     <>
-      {author && author.length === 0 && (
-        <>
-          <SorryReview>
-            "We don't have any reviews for this movie. Sorry..."
-          </SorryReview>
-        </>
+      {author.length === 0 && (
+        <SorryReview>
+          "We don't have any reviews for this movie. Sorry..."
+        </SorryReview>
       )}
       {author &&
         author.map(auth => (

@@ -2,9 +2,10 @@ import { GetSearchMovie } from 'components/api-request';
 import { FormSubmit } from 'components/form-submit/FormSubmit';
 import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
-import { Container, Items, List } from './MovieList.styled';
+import { Container } from './Movies.styled';
+import { MovieList } from 'components/movie-list/MovieList';
 
-const MovieList = () => {
+const Movies = () => {
   const [querySearch, setQuerySearch] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -33,22 +34,12 @@ const MovieList = () => {
     <>
       <Container>
         <FormSubmit handleSubmit={handleSubmit} />
-        <Items>
-          {querySearch &&
-            querySearch.map(listOfFilms => (
-              <li key={listOfFilms.id}>
-                <List
-                  to={`/movie/${listOfFilms.id}`}
-                  state={{ from: location }}
-                >
-                  {listOfFilms.title}
-                </List>
-              </li>
-            ))}
-        </Items>
+        {querySearch && (
+          <MovieList querySearch={querySearch} location={location} />
+        )}
       </Container>
     </>
   );
 };
 
-export default MovieList;
+export default Movies;

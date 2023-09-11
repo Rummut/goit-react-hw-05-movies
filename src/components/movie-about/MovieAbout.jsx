@@ -9,16 +9,18 @@ import {
   Overview,
   TitleAbout,
 } from './MovieAbout.styled';
+import { useRef } from 'react';
 
 export const MovieAbout = ({ aboutMovie }) => {
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/movie';
+  const LinkRef = useRef(location.state?.from ?? '/movie');
   const defaultImg =
     'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
   const genres = aboutMovie.genres;
+
   return (
     <>
-      <BackLink to={backLinkHref}>&#10229; Back to search</BackLink>
+      <BackLink to={LinkRef.current}>&#10229; Back to search</BackLink>
       <ContainerAbout>
         <img
           src={
@@ -54,14 +56,10 @@ export const MovieAbout = ({ aboutMovie }) => {
       <AdditionalInfo>
         Additional Information
         <li>
-          <Link to="cast" state={{ from: backLinkHref }}>
-            Cast
-          </Link>
+          <Link to="cast">Cast</Link>
         </li>
         <li>
-          <Link to="reviews" state={{ from: backLinkHref }}>
-            Reviews
-          </Link>
+          <Link to="reviews">Reviews</Link>
         </li>
         <Outlet />
       </AdditionalInfo>
